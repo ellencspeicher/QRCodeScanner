@@ -1,0 +1,20 @@
+// script.js
+const scanner = new Instascan.Scanner({ video: document.getElementById('scanner') });
+
+scanner.addListener('scan', function (content) {
+    // Log data to Google Form or Spreadsheet
+    logDataToGoogleForm(content);
+});
+
+Instascan.Camera.getCameras().then(function (cameras) {
+    if (cameras.length > 0) {
+        scanner.start(cameras[0]);
+    } else {
+        console.error('No cameras found.');
+    }
+});
+
+function logDataToGoogleForm(content) {
+    // Implement the code to log data to your Google Form here
+    // You may need to use Google Apps Script or other methods for this part
+}
